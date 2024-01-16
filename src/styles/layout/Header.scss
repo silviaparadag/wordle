@@ -1,0 +1,30 @@
+@import '../core/variables';
+@import '../core/reset';
+@import '../core/mixins';
+
+.header {
+    width: 100%;
+    padding: 20px 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__right {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--title {
+            font-family: $font-secondary2;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+    }
+
+    &__logo {
+        height: 2.5rem;
+        will-change: filter;
+        transition: filter 300ms;
+    }
+}

@@ -1,0 +1,34 @@
+@import '../core/variables.scss';
+@import '../core/mixins.scss';
+
+.footer {
+    color: $color-secondary4;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0 10px;
+    font-family: $font-main2;
+    font-size: .8rem;
+
+    &__grid {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__text {
+        color: $color-secondary;
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 10px 0;
+        font-size: .65rem;
+
+        &--italic {
+            font-style: italic;
+        }
+
+        &--link {
+            color: $color-gray-ultralight;
+            text-decoration: none;
+        }
+    }
+}

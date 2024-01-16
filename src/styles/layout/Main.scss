@@ -1,0 +1,88 @@
+@import '../core/reset';
+@import '../core/variables';
+@import '../core/mixins';
+
+.hero {
+    color: $color-primary2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    &__title {
+        font-size: 1rem;
+    }
+}
+
+.word {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    &__column {
+        padding: 3px;
+        border: solid 1px $color-secondary;
+    }
+
+    &__level1 {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        color: gray;
+        font-size: 3rem;
+    }
+
+    &__level2 {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        color: gray;
+        font-size: 3rem;
+    }
+
+    &__level3 {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        color: gray;
+        font-size: 3rem;
+    }
+
+    &__level4 {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        color: gray;
+        font-size: 3rem;
+    }
+
+    &__level5 {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        color: gray;
+        font-size: 3rem;
+    }
+
+    &__level6 {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        color: gray;
+        font-size: 3rem;
+    }
+}
+
+.keyboard {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__row {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
