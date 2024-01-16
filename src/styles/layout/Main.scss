@@ -9,8 +9,11 @@
     align-items: center;
     gap: 1rem;
 
-    &__title {
-        font-size: 1rem;
+    &__subtitle {
+        font-family: $font-main3;
+        font-size: 1.2rem;
+        font-style: italic;
+        padding: 10px 0 20px;
     }
 }
 
@@ -21,14 +24,19 @@
     gap: 1rem;
 
     &__column {
-        padding: 3px;
+        width: 50px;
+        height: 60px;
+        padding: 2.3px;
         border: solid 1px $color-secondary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     &__level1 {
         display: flex;
         flex-direction: row;
-        gap: 1rem;
+        gap: .8rem;
         color: gray;
         font-size: 3rem;
     }
@@ -36,7 +44,7 @@
     &__level2 {
         display: flex;
         flex-direction: row;
-        gap: 1rem;
+        gap: .8rem;
         color: gray;
         font-size: 3rem;
     }
@@ -44,7 +52,7 @@
     &__level3 {
         display: flex;
         flex-direction: row;
-        gap: 1rem;
+        gap: .8rem;
         color: gray;
         font-size: 3rem;
     }
@@ -52,7 +60,7 @@
     &__level4 {
         display: flex;
         flex-direction: row;
-        gap: 1rem;
+        gap: .8rem;
         color: gray;
         font-size: 3rem;
     }
@@ -60,7 +68,7 @@
     &__level5 {
         display: flex;
         flex-direction: row;
-        gap: 1rem;
+        gap: .8rem;
         color: gray;
         font-size: 3rem;
     }
@@ -68,7 +76,7 @@
     &__level6 {
         display: flex;
         flex-direction: row;
-        gap: 1rem;
+        gap: .8rem;
         color: gray;
         font-size: 3rem;
     }
@@ -78,11 +86,23 @@
     margin-top: 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
 
     &__row {
         display: flex;
         flex-direction: row;
-        gap: 1rem;
+        gap: .6rem;
+
+    }
+
+    &__key {
+        border-radius: 3px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        text-transform: uppercase;
     }
 }

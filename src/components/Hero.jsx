@@ -4,7 +4,7 @@ import '../styles/layout/Main.scss';
 const Hero = () => {
   return (
     <div className="hero">
-      <h1 className="hero__title">Let's play!</h1>
+      <h1 className="hero__subtitle">Let's play!</h1>
 
       <div className="word">
         <div className="word__level1">
@@ -76,7 +76,7 @@ const Hero = () => {
           <button className="keyboard__key">l</button>
         </div>
         <div className="keyboard__row">
-          <div className="keyboard__key">Enter</div>
+          <button className="keyboard__key">Enter</button>
           <button className="keyboard__key">z</button>
           <button className="keyboard__key">x</button>
           <button className="keyboard__key">c</button>
@@ -84,7 +84,7 @@ const Hero = () => {
           <button className="keyboard__key">b</button>
           <button className="keyboard__key">n</button>
           <button className="keyboard__key">m</button>
-          <div className="keyboard__key">Del</div>
+          <button className="keyboard__key">Del</button>
         </div>
       </div>
     </div>
