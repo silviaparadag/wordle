@@ -2,17 +2,14 @@
 @import './core/variables';
 @import './core/mixins';
 
-// #root {
-//   max-width: 1280px;
-//   margin: 0 auto;
-//   padding: 2rem;
-//   text-align: center;
-// }
+#root {
+  height: 100%;
+}
 
 .App {
-  background-color: $color-primary3;
   width: 100vw;
-
+  padding: 10px 10px;
+  //height: 100vh;
 
   @include Desktop() {
     padding: 0 200px;

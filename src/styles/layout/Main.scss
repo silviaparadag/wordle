@@ -11,9 +11,16 @@
 
     &__subtitle {
         font-family: $font-main3;
-        font-size: 1.2rem;
+        font-size: .85rem;
         font-style: italic;
-        padding: 10px 0 20px;
+        padding: 5px 0 10px;
+        display: none;
+
+        @include Tablet() {
+            display: flex;
+            font-size: 1.2rem;
+            padding: 10px 0 5px;
+        }
     }
 }
 
@@ -21,7 +28,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: .24rem;
+
+    @include Tablet() {
+        gap: .47rem;
+    }
 
     &__column {
         width: 50px;
@@ -33,66 +44,46 @@
         justify-content: center;
     }
 
-    &__level1 {
-        display: flex;
-        flex-direction: row;
-        gap: .8rem;
-        color: gray;
-        font-size: 3rem;
-    }
-
-    &__level2 {
-        display: flex;
-        flex-direction: row;
-        gap: .8rem;
-        color: gray;
-        font-size: 3rem;
-    }
-
-    &__level3 {
-        display: flex;
-        flex-direction: row;
-        gap: .8rem;
-        color: gray;
-        font-size: 3rem;
-    }
-
-    &__level4 {
-        display: flex;
-        flex-direction: row;
-        gap: .8rem;
-        color: gray;
-        font-size: 3rem;
-    }
-
-    &__level5 {
-        display: flex;
-        flex-direction: row;
-        gap: .8rem;
-        color: gray;
-        font-size: 3rem;
-    }
-
+    &__level1,
+    &__level2,
+    &__level3,
+    &__level4,
+    &__level5,
     &__level6 {
         display: flex;
         flex-direction: row;
-        gap: .8rem;
+        gap: .24rem;
         color: gray;
-        font-size: 3rem;
+        font-size: 2rem;
+
+        @include Tablet() {
+            gap: .47rem;
+            font-size: 2rem;
+        }
     }
+
 }
 
 .keyboard {
-    margin-top: 30px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: .26rem;
+
+    @include Tablet() {
+        gap: .5rem;
+        margin-top: 5px;
+    }
 
     &__row {
         display: flex;
         flex-direction: row;
-        gap: .6rem;
+        gap: .26rem;
+
+        @include Tablet() {
+            gap: .5rem;
+        }
 
     }
 
