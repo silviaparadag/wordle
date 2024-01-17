@@ -41,26 +41,14 @@ function App() {
     console.log('enter ' + ev.target.value);
   };
   // const proposedWord = [...usedLetters];
-
-  // if (proposedWord.length < 5) {
-  //   proposedWord.push(selectedLetter);
-  // }
-
   // console.log(proposedWord);
-
-  // const proposedWord =
-  //   usedLetters.length < 5 ? [...usedLetters, selectedLetter] : usedLetters;
-
-  // const proposedWord =
-  //   usedLetters.length < 5 ? usedLetters.push(selectedLetter) : usedLetters;
-
-  // console.log(proposedWord);
-  //  setUsedLetters([...usedLetters, selectedLetter]);
-
-  // const handleLetterClicked = (ev) => {
-  //   setUsedLetters([...usedLetters, ev.target.value]);
-  // };
-  // console.log(handleLetterClicked());
+  const proposedWord = usedLetters.map((letter, ind) => {
+    return (
+      <li key={ind} className="word__letter">
+        {letter}
+      </li>
+    );
+  });
 
   return (
     <>
@@ -68,7 +56,7 @@ function App() {
       <div className="App">
         <Header />
         <main className="main">
-          <Main words={words} />
+          <Main words={words} proposedWord={proposedWord} />
           <div className="keyboard">
             <div className="keyboard__row">
               <button

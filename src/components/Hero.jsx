@@ -23,20 +23,8 @@ const Hero = (props) => {
           <li className="word__letter wrong">w</li>
           <li className="word__letter correct">D</li>
         </ul>
-        <ul className="word__level3">
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-        </ul>
-        <ul className="word__level4">
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-        </ul>
+        <ul className="word__level3">{props.proposedWord}</ul>
+        <ul className="word__level4"></ul>
         <ul className="word__level5">
           <li className="word__letter">_</li>
           <li className="word__letter">_</li>
@@ -97,5 +85,5 @@ export default Hero;
 
 Hero.propTypes = {
   words: PropTypes.array,
-  renderLetters: PropTypes.func,
+  proposedWord: PropTypes.array,
 };
