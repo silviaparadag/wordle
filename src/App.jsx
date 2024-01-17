@@ -9,7 +9,7 @@ import './styles/App.scss';
 function App() {
   const [words, setWords] = useState([]);
   const [usedLetters, setUsedLetters] = useState([]);
-  // const [selectedLetter, setSelectedLetter] = useState('');
+  const [selectedLetter, setSelectedLetter] = useState('');
 
   useEffect(() => {
     dataApi.getWordFromJson().then((data) => {
@@ -19,66 +19,45 @@ function App() {
     });
   }, []);
 
-  const handleClick = (ev) => {
-    ev.preventDefault();
-    console.log('click ' + ev.target.value);
-  };
-
-  // const handleLetterClicked = (ev) => {
-  //   setUsedLetters([...usedLetters, ev.target.value]);
-  // };
-  // console.log(handleLetterClicked());
-
   const randomWord = Math.floor(Math.random() * words.length);
   console.log(randomWord, words[randomWord]);
   const selectedWord = words[randomWord];
   console.log(selectedWord);
 
-  // const renderLetters = () => {
-  //   const wordLetters = selectedWord.split('');
-  //   return wordLetters.map((letter, ind) => {
-  //     if (usedLetters.includes(letter)) {
-  //       return (
-  //         <li key={ind} className="correct">
-  //           {letter}
-  //         </li>
-  //       );
-  //     } else {
-  //       return (
-  //         <li key={ind} className="wrong">
-  //           {letter}
-  //         </li>
-  //       );
-  //     }
-  //   });
-  // };
-  // console.log(renderLetters());
+  const handleClick = (ev) => {
+    ev.preventDefault();
+    console.log('click ' + ev.target.value);
+    setSelectedLetter(ev.target.value);
+    setUsedLetters([...usedLetters, selectedLetter]);
+  };
+  console.log(selectedLetter);
+  console.log(usedLetters);
 
-  // const renderCorrectLetters = () => {
-  //   const correctLetters = usedLetters.filter(
-  //     (letter) =>
-  //       !selectedWord.includes(letter).map((letter, ind) => (
-  //         <li key={ind} className="letter">
-  //           {letter}
-  //         </li>
-  //       ))
-  //   );
-  //   return correctLetters;
-  // };
-  // console.log(renderCorrectLetters());
+  const handleEnter = (ev) => {
+    ev.preventDefault();
+    console.log('enter ' + ev.target.value);
+  };
+  // const proposedWord = [...usedLetters];
 
-  // const renderWrongLetters = () => {
-  //   const wrongLetters = usedLetters.filter(
-  //     (letter) =>
-  //       !selectedWord.includes(letter).map((letter, ind) => (
-  //         <li key={ind} className="letter">
-  //           {letter}
-  //         </li>
-  //       ))
-  //   );
-  //   return wrongLetters;
+  // if (proposedWord.length < 5) {
+  //   proposedWord.push(selectedLetter);
+  // }
+
+  // console.log(proposedWord);
+
+  // const proposedWord =
+  //   usedLetters.length < 5 ? [...usedLetters, selectedLetter] : usedLetters;
+
+  // const proposedWord =
+  //   usedLetters.length < 5 ? usedLetters.push(selectedLetter) : usedLetters;
+
+  // console.log(proposedWord);
+  //  setUsedLetters([...usedLetters, selectedLetter]);
+
+  // const handleLetterClicked = (ev) => {
+  //   setUsedLetters([...usedLetters, ev.target.value]);
   // };
-  // console.log(renderWrongLetters());
+  // console.log(handleLetterClicked());
 
   return (
     <>
@@ -227,7 +206,7 @@ function App() {
             </div>
             <div className="keyboard__row">
               <button
-                onClick={handleClick}
+                onSubmit={handleEnter}
                 className="keyboard__key"
                 value={'q'}
               >
