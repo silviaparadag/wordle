@@ -1,57 +1,59 @@
-import React from 'react';
+// import React from 'react';
 import '../styles/layout/Main.scss';
+import PropTypes from 'prop-types';
 
-const Hero = () => {
+const Hero = (props) => {
+  console.log(props.words);
   return (
     <div className="hero">
       <h1 className="hero__subtitle">Let's play!</h1>
 
       <div className="word">
-        <div className="word__level1">
-          <div className="word__column">A</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
-        <div className="word__level2">
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
-        <div className="word__level3">
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
-        <div className="word__level4">
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
-        <div className="word__level5">
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
-        <div className="word__level6">
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
+        <ul className="word__level1">
+          <li className="word__letter correct">B</li>
+          <li className="word__letter wrong">L</li>
+          <li className="word__letter correct">O</li>
+          <li className="word__letter wrong">N</li>
+          <li className="word__letter correct">D</li>
+        </ul>
+        <ul className="word__level2">
+          <li className="word__letter correct">B</li>
+          <li className="word__letter correct">R</li>
+          <li className="word__letter correct">O</li>
+          <li className="word__letter wrong">w</li>
+          <li className="word__letter correct">D</li>
+        </ul>
+        <ul className="word__level3">
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+        </ul>
+        <ul className="word__level4">
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+        </ul>
+        <ul className="word__level5">
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+        </ul>
+        <ul className="word__level6">
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+        </ul>
       </div>
 
-      <div className="keyboard">
+      {/* <div className="keyboard">
         <div className="keyboard__row">
           <button className="keyboard__key">q</button>
           <button className="keyboard__key">w</button>
@@ -86,9 +88,14 @@ const Hero = () => {
           <button className="keyboard__key">m</button>
           <button className="keyboard__key">Del</button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
 
 export default Hero;
+
+Hero.propTypes = {
+  words: PropTypes.array,
+  renderLetters: PropTypes.func,
+};
