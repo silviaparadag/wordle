@@ -15,7 +15,6 @@ function App() {
     dataApi.getWordFromJson().then((data) => {
       const result = data.map((eachProject) => eachProject);
       setWords(result);
-      console.log(result);
     });
   }, []);
 
@@ -36,10 +35,10 @@ function App() {
   console.log(selectedLetter);
   console.log(usedLetters);
 
-  // const handleEnter = (ev) => {
-  //   ev.preventDefault();
-  //   console.log('enter ' + ev.target.value);
-  // };
+  const handleEnter = (ev) => {
+    ev.preventDefault();
+    console.log('enter');
+  };
 
   // const proposedWord = [...usedLetters];
   // console.log(proposedWord);
@@ -62,6 +61,7 @@ function App() {
             words={words}
             proposedWord={proposedWord}
             handleClick={handleClick}
+            handleEnter={handleEnter}
           />
         </main>
         <Footer />
