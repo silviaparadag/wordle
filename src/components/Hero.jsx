@@ -1,90 +1,248 @@
-import React from 'react';
+// import React from 'react';
 import '../styles/layout/Main.scss';
+import PropTypes from 'prop-types';
 
-const Hero = () => {
+const Hero = (props) => {
+  console.log(props.words);
   return (
     <div className="hero">
       <h1 className="hero__subtitle">Let's play!</h1>
 
       <div className="word">
-        <div className="word__level1">
-          <div className="word__column">A</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
-        <div className="word__level2">
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
-        <div className="word__level3">
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
-        <div className="word__level4">
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
-        <div className="word__level5">
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
-        <div className="word__level6">
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-          <div className="word__column">_</div>
-        </div>
+        <ul className="word__level1">
+          <li className="word__letter correct">B</li>
+          <li className="word__letter wrong">L</li>
+          <li className="word__letter correct">O</li>
+          <li className="word__letter wrong">N</li>
+          <li className="word__letter correct">D</li>
+        </ul>
+        <ul className="word__level2">
+          <li className="word__letter correct">B</li>
+          <li className="word__letter correct">R</li>
+          <li className="word__letter correct">O</li>
+          <li className="word__letter wrong">w</li>
+          <li className="word__letter correct">D</li>
+        </ul>
+        <ul className="word__level3">{props.proposedWord}</ul>
+        <ul className="word__level4"></ul>
+        <ul className="word__level5">
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+        </ul>
+        <ul className="word__level6">
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+          <li className="word__letter">_</li>
+        </ul>
       </div>
-
       <div className="keyboard">
         <div className="keyboard__row">
-          <button className="keyboard__key">q</button>
-          <button className="keyboard__key">w</button>
-          <button className="keyboard__key">e</button>
-          <button className="keyboard__key">r</button>
-          <button className="keyboard__key">t</button>
-          <button className="keyboard__key">y</button>
-          <button className="keyboard__key">u</button>
-          <button className="keyboard__key">i</button>
-          <button className="keyboard__key">o</button>
-          <button className="keyboard__key">p</button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'q'}
+          >
+            q
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'w'}
+          >
+            w
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'e'}
+          >
+            e
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'r'}
+          >
+            r
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'t'}
+          >
+            t
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'y'}
+          >
+            y
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'u'}
+          >
+            u
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'i'}
+          >
+            i
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'o'}
+          >
+            o
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'p'}
+          >
+            p
+          </button>
         </div>
         <div className="keyboard__row">
-          <button className="keyboard__key">a</button>
-          <button className="keyboard__key">s</button>
-          <button className="keyboard__key">d</button>
-          <button className="keyboard__key">f</button>
-          <button className="keyboard__key">g</button>
-          <button className="keyboard__key">h</button>
-          <button className="keyboard__key">j</button>
-          <button className="keyboard__key">k</button>
-          <button className="keyboard__key">l</button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'a'}
+          >
+            a
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'s'}
+          >
+            s
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'d'}
+          >
+            d
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'f'}
+          >
+            f
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'g'}
+          >
+            g
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'h'}
+          >
+            h
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'j'}
+          >
+            j
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'k'}
+          >
+            k
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'l'}
+          >
+            l
+          </button>
         </div>
         <div className="keyboard__row">
-          <button className="keyboard__key">Enter</button>
-          <button className="keyboard__key">z</button>
-          <button className="keyboard__key">x</button>
-          <button className="keyboard__key">c</button>
-          <button className="keyboard__key">v</button>
-          <button className="keyboard__key">b</button>
-          <button className="keyboard__key">n</button>
-          <button className="keyboard__key">m</button>
-          <button className="keyboard__key">Del</button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'q'}
+          >
+            Enter
+          </button>
+          {/* ATTENTION: Enter should be onSummit */}
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'z'}
+          >
+            z
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'x'}
+          >
+            x
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'c'}
+          >
+            c
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'v'}
+          >
+            v
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'b'}
+          >
+            b
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'n'}
+          >
+            n
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'m'}
+          >
+            m
+          </button>
+          <button
+            onClick={props.handleClick}
+            className="keyboard__key"
+            value={'Del'}
+          >
+            Del
+          </button>
         </div>
       </div>
     </div>
@@ -92,3 +250,9 @@ const Hero = () => {
 };
 
 export default Hero;
+
+Hero.propTypes = {
+  words: PropTypes.array,
+  proposedWord: PropTypes.array,
+  handleClick: PropTypes.func,
+};
