@@ -27,8 +27,11 @@ function App() {
   const handleClick = (ev) => {
     ev.preventDefault();
     console.log('click ' + ev.target.value);
-    setSelectedLetter(ev.target.value);
-    setUsedLetters([...usedLetters, selectedLetter]);
+    const letter = ev.target.value;
+    setSelectedLetter(letter);
+    if (usedLetters.length < 5) {
+      setUsedLetters([...usedLetters, letter]);
+    }
   };
   console.log(selectedLetter);
   console.log(usedLetters);
