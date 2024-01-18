@@ -43,6 +43,8 @@
         align-items: center;
         justify-content: center;
         text-transform: uppercase;
+        color: $color-primary;
+        // background-color: $color-secondary;
 
         @include darkMode {
             border: solid 1px $color-gray-ultralight;
@@ -71,12 +73,18 @@
 }
 
 .correct {
-    background-color: green;
-    color: white;
+    background-color: $color-primary3;
+    color: $color-primary;
 }
 
-.wrong {
-    background-color: gray;
+.present {
+    background-color: $color-primary4;
+    color: $color-primary;
+}
+
+.absent {
+    background-color: $color-secondary;
+    color: $color-primary;
 
     @include darkMode {
         color: $color-primary2;

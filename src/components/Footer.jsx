@@ -10,7 +10,7 @@ const Footer = () => {
         </a>
       </div> */}
       <div className="footer__text">
-        <p className="footer__text--p">© Silvia Parada | 2023</p>
+        <p className="footer__text--p">© Silvia Parada | 2024</p>
         <p className="footer__text--italic">All rights reserved</p>
       </div>
     </footer>

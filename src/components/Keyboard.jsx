@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Keyboard = (props) => {
   return (
-    <div className="keyboard">
+    <form className="keyboard" type="submit" onSubmit={props.handleEnter}>
       <div className="keyboard__row">
         <button
           onClick={props.handleClick}
@@ -142,10 +142,9 @@ const Keyboard = (props) => {
         </button>
       </div>
       <div className="keyboard__row">
-        <button onSubmit={props.handleEnter} className="keyboard__key">
+        <button type="submit" className="keyboard__key">
           Enter
         </button>
-        {/* ATTENTION: Enter should be onSummit */}
         <button
           onClick={props.handleClick}
           className="keyboard__key"
@@ -203,7 +202,7 @@ const Keyboard = (props) => {
           Del
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 
