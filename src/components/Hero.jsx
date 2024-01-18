@@ -11,16 +11,16 @@ const Hero = (props) => {
       <div className="word">
         <ul className="word__level1">
           <li className="word__letter correct">B</li>
-          <li className="word__letter wrong">L</li>
+          <li className="word__letter absent">L</li>
           <li className="word__letter correct">O</li>
-          <li className="word__letter wrong">N</li>
-          <li className="word__letter correct">D</li>
+          <li className="word__letter absent">N</li>
+          <li className="word__letter present">D</li>
         </ul>
         <ul className="word__level2">
           <li className="word__letter correct">B</li>
           <li className="word__letter correct">R</li>
           <li className="word__letter correct">O</li>
-          <li className="word__letter wrong">w</li>
+          <li className="word__letter absent">w</li>
           <li className="word__letter correct">D</li>
         </ul>
         <ul className="word__level3">{props.proposedWord}</ul>
