@@ -14,6 +14,7 @@ function App() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [isAbsent, setIsAbsent] = useState(false);
   const [isPresent, setIsPresent] = useState(false);
+  const [letterStates, setLetterStates] = useState([]);
 
   useEffect(() => {
     dataApi.getWordFromJson().then((data) => {
@@ -38,28 +39,35 @@ function App() {
   console.log(selectedLetter);
   console.log(usedLetters);
 
-  const letterClassName = `word__letter ${isCorrect ? 'correct' : ''} ${
-    isAbsent ? 'absent' : ''
-  } ${isPresent ? 'present' : ''}`;
-
   const handleEnter = (ev) => {
     ev.preventDefault();
     console.log('enter');
     const lettersRandomWord = randomWord.split('');
     console.log(lettersRandomWord);
-
-    return lettersRandomWord.forEach((letter, ind) => {
+    const updatedLetterStates = lettersRandomWord.map((letter, ind) => {
       if (usedLetters.includes(letter) && usedLetters.indexOf(letter) === ind) {
-        return setIsCorrect(true), setIsPresent(false), setIsAbsent(false);
-      } else if (usedLetters.includes(letter)) {
-        return setIsPresent(true), setIsAbsent(false), setIsCorrect(false);
+        // correctCount++;
+        return 'correct';
+      } else if (
+        usedLetters.includes(letter) &&
+        usedLetters.indexOf(letter) !== ind
+      ) {
+        // presentCount++;
+        return 'present';
       } else {
-        return setIsAbsent(true), setIsCorrect(false), setIsPresent(false);
+        return 'absent';
       }
     });
+    console.log(updatedLetterStates);
+
+    setIsCorrect(updatedLetterStates.every((state) => state === 'correct'));
+    setIsPresent(updatedLetterStates.some((state) => state === 'present'));
+    setIsAbsent(updatedLetterStates.every((state) => state === 'absent'));
+    setLetterStates(updatedLetterStates);
   };
 
   const proposedWord = usedLetters.map((letter, ind) => {
+    const letterClassName = `word__letter ${letterStates[ind]}`;
     return (
       <li key={ind} className={letterClassName}>
         {letter}
