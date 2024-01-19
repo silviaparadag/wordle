@@ -9,42 +9,52 @@ const Hero = (props) => {
       <h1 className="hero__subtitle">Let's play!</h1>
 
       <div className="word">
-        <ul className="word__level1">
-          <li className="word__letter correct">B</li>
-          <li className="word__letter absent">L</li>
-          <li className="word__letter correct">O</li>
-          <li className="word__letter absent">N</li>
-          <li className="word__letter present">D</li>
-        </ul>
-        <ul className="word__level2">
-          <li className="word__letter correct">B</li>
-          <li className="word__letter correct">R</li>
-          <li className="word__letter correct">O</li>
-          <li className="word__letter absent">w</li>
-          <li className="word__letter correct">D</li>
-        </ul>
-        <ul className="word__level3">{props.proposedWord}</ul>
-        <ul className="word__level4">
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-        </ul>
-        <ul className="word__level5">
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-        </ul>
-        <ul className="word__level6">
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-          <li className="word__letter">_</li>
-        </ul>
+        <ul className="word__level1">{props.proposedWord}</ul>
+      </div>
+
+      <div className="board">
+        <div className="board__level">
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+        </div>
+        <div className="board__level">
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+        </div>
+        <div className="board__level">
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+        </div>
+        <div className="board__level">
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+        </div>
+        <div className="board__level">
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+        </div>
+        <div className="board__level">
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+          <div className="word__letter">_</div>
+        </div>
       </div>
       <Keyboard
         handleClick={props.handleClick}
