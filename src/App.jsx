@@ -66,12 +66,12 @@ function App() {
     setLetterStates(updatedLetterStates);
   };
 
-  const proposedWord = usedLetters.map((letter, ind) => {
+  const proposedLetter = usedLetters.map((letter, ind) => {
     const letterClassName = `word__letter ${letterStates[ind]}`;
     return (
-      <li key={ind} className={letterClassName}>
+      <div key={ind} className={letterClassName}>
         {letter}
-      </li>
+      </div>
     );
   });
 
@@ -83,7 +83,7 @@ function App() {
         <main className="main">
           <Main
             words={words}
-            proposedWord={proposedWord}
+            proposedLetter={proposedLetter}
             handleClick={handleClick}
             handleEnter={handleEnter}
           />
