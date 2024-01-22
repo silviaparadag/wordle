@@ -16,16 +16,25 @@ function App() {
   const [isPresent, setIsPresent] = useState(false);
   const [letterStates, setLetterStates] = useState([]);
 
+  const [row, setRow] = useState([]);
+
+  const emptyWord = Array.from({ length: 5 }, (_, index) => (
+    <div key={index} className="word__letter">
+      {' '}
+    </div>
+  ));
+
   useEffect(() => {
     dataApi.getWordFromJson().then((data) => {
       const result = data.map((eachProject) => eachProject);
       setWords(result);
       const randomIndex = Math.floor(Math.random() * result.length);
       setRandomWord(result[randomIndex]);
+      setRow([emptyWord]);
     });
   }, []);
-
   console.log(randomWord);
+  console.log(row);
 
   const handleClick = (ev) => {
     ev.preventDefault();
@@ -33,9 +42,20 @@ function App() {
     const letter = ev.target.value;
     setSelectedLetter(letter);
     if (usedLetters.length < 5) {
+      const updatedRow = [...row];
+      const firstEmptyIndex = updatedRow[0].indexOf(' ');
+      if (firstEmptyIndex !== -1) {
+        updatedRow[0][firstEmptyIndex] = (
+          <div key={firstEmptyIndex} className="word__letter">
+            {letter}
+          </div>
+        );
+        setRow(updatedRow);
+      }
       setUsedLetters([...usedLetters, letter]);
     }
   };
+
   console.log(selectedLetter);
   console.log(usedLetters);
 
@@ -66,7 +86,7 @@ function App() {
     setLetterStates(updatedLetterStates);
   };
 
-  const proposedLetter = usedLetters.map((letter, ind) => {
+  const updateProposedWord = usedLetters.map((letter, ind) => {
     const letterClassName = `word__letter ${letterStates[ind]}`;
     return (
       <div key={ind} className={letterClassName}>
@@ -83,9 +103,11 @@ function App() {
         <main className="main">
           <Main
             words={words}
-            proposedLetter={proposedLetter}
+            proposedWord={updateProposedWord}
             handleClick={handleClick}
             handleEnter={handleEnter}
+            row={row}
+            selectedLetter={selectedLetter}
           />
         </main>
         <Footer />
