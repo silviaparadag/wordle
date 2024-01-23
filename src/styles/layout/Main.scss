@@ -24,6 +24,26 @@
     }
 }
 
+.board {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: .24rem;
+
+    &__level1,
+    &__level2,
+    &__level3,
+    &__level4,
+    &__level5,
+    &__level6 {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: .24rem;
+    }
+}
+
+
+
 .word {
     display: flex;
     flex-direction: column;
@@ -44,6 +64,7 @@
         justify-content: center;
         text-transform: uppercase;
         color: $color-primary;
+        font-size: 2rem;
         // background-color: $color-secondary;
 
         @include darkMode {

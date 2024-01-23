@@ -15,6 +15,9 @@ function App() {
   const [isAbsent, setIsAbsent] = useState(false);
   const [isPresent, setIsPresent] = useState(false);
   const [letterStates, setLetterStates] = useState([]);
+  const [row, setRow] = useState([]);
+
+  const emptyRow = Array.from({ length: 5 }, (_, index) => ' ');
 
   useEffect(() => {
     dataApi.getWordFromJson().then((data) => {
@@ -22,22 +25,35 @@ function App() {
       setWords(result);
       const randomIndex = Math.floor(Math.random() * result.length);
       setRandomWord(result[randomIndex]);
+      setRow([emptyRow]);
     });
   }, []);
-
   console.log(randomWord);
-
+  console.log(row);
   const handleClick = (ev) => {
     ev.preventDefault();
     console.log('click ' + ev.target.value);
     const letter = ev.target.value;
     setSelectedLetter(letter);
+    const updatedRow = [...row];
+    const firstEmptyIndex = updatedRow[0].findIndex(
+      (element) => element === ' '
+    );
+    console.log(firstEmptyIndex);
     if (usedLetters.length < 5) {
+      if (firstEmptyIndex !== -1) {
+        updatedRow[0][firstEmptyIndex] = letter;
+        setRow(updatedRow);
+      }
+      console.log(letter);
+      console.log(updatedRow);
       setUsedLetters([...usedLetters, letter]);
     }
   };
+
   console.log(selectedLetter);
   console.log(usedLetters);
+  console.log(row);
 
   const handleEnter = (ev) => {
     ev.preventDefault();
@@ -46,32 +62,30 @@ function App() {
     console.log(lettersRandomWord);
     const updatedLetterStates = lettersRandomWord.map((letter, ind) => {
       if (usedLetters.includes(letter) && usedLetters.indexOf(letter) === ind) {
-        // correctCount++;
         return 'correct';
       } else if (
         usedLetters.includes(letter) &&
         usedLetters.indexOf(letter) !== ind
       ) {
-        // presentCount++;
         return 'present';
       } else {
         return 'absent';
       }
     });
     console.log(updatedLetterStates);
-
+    console.log(row);
     setIsCorrect(updatedLetterStates.every((state) => state === 'correct'));
     setIsPresent(updatedLetterStates.some((state) => state === 'present'));
     setIsAbsent(updatedLetterStates.every((state) => state === 'absent'));
     setLetterStates(updatedLetterStates);
   };
 
-  const proposedWord = usedLetters.map((letter, ind) => {
+  const updateProposedWord = usedLetters.map((letter, ind) => {
     const letterClassName = `word__letter ${letterStates[ind]}`;
     return (
-      <li key={ind} className={letterClassName}>
+      <div key={ind} className={letterClassName}>
         {letter}
-      </li>
+      </div>
     );
   });
 
@@ -83,9 +97,12 @@ function App() {
         <main className="main">
           <Main
             words={words}
-            proposedWord={proposedWord}
+            proposedWord={updateProposedWord}
             handleClick={handleClick}
             handleEnter={handleEnter}
+            row={row}
+            selectedLetter={selectedLetter}
+            letterStates={letterStates}
           />
         </main>
         <Footer />
