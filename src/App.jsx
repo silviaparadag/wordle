@@ -16,13 +16,14 @@ function App() {
   const [isPresent, setIsPresent] = useState(false);
   const [letterStates, setLetterStates] = useState([]);
 
+  // const emptyRow = Array.from({ length: 5 }, (_, index) => (
+  //   <div key={index} className="word__letter">
+  //     {' '}
+  //   </div>
+  // ));
   const [row, setRow] = useState([]);
 
-  const emptyWord = Array.from({ length: 5 }, (_, index) => (
-    <div key={index} className="word__letter">
-      {' '}
-    </div>
-  ));
+  const emptyRow = Array.from({ length: 5 }, (_, index) => ' ');
 
   useEffect(() => {
     dataApi.getWordFromJson().then((data) => {
@@ -30,28 +31,28 @@ function App() {
       setWords(result);
       const randomIndex = Math.floor(Math.random() * result.length);
       setRandomWord(result[randomIndex]);
-      setRow([emptyWord]);
+      setRow([emptyRow]);
     });
   }, []);
   console.log(randomWord);
   console.log(row);
-
   const handleClick = (ev) => {
     ev.preventDefault();
     console.log('click ' + ev.target.value);
     const letter = ev.target.value;
     setSelectedLetter(letter);
+    const updatedRow = [...row];
+    const firstEmptyIndex = updatedRow[0].findIndex(
+      (element) => element === ' '
+    );
+    console.log(firstEmptyIndex);
     if (usedLetters.length < 5) {
-      const updatedRow = [...row];
-      const firstEmptyIndex = updatedRow[0].indexOf(' ');
       if (firstEmptyIndex !== -1) {
-        updatedRow[0][firstEmptyIndex] = (
-          <div key={firstEmptyIndex} className="word__letter">
-            {letter}
-          </div>
-        );
-        setRow(updatedRow);
+        updatedRow[0][firstEmptyIndex] = letter; // Update the first row directly
+        setRow(updatedRow); // Update the row state
       }
+      console.log(letter);
+      console.log(updatedRow);
       setUsedLetters([...usedLetters, letter]);
     }
   };

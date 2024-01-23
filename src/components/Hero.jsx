@@ -4,25 +4,44 @@ import '../styles/layout/Main.scss';
 import PropTypes from 'prop-types';
 
 const Hero = (props) => {
-  const noLetter = ' ';
+  const noLetter = 'X';
+
+  const eachRow = props.row.map((columns, rowIndex) => {
+    return (
+      <div key={rowIndex} className="board__level1">
+        {columns.map((letter, colIndex) => (
+          <div key={colIndex} className="word__letter">
+            {letter === ' ' ? (
+              ' '
+            ) : (
+              <span className={`letter-${letter}`}>{letter}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  });
   return (
     <div className="hero">
       <h1 className="hero__subtitle">Let's play!</h1>
 
       <div className="board">
+        {eachRow}
         {props.row.map((columns, rowIndex) => (
           <div key={rowIndex} className="board__level1">
-            {columns.map((letter) => letter || noLetter)}
+            {columns.map((letter, colIndex) => (
+              <div key={colIndex} className="word__letter">
+                {letter === ' ' ? (
+                  ' '
+                ) : (
+                  <span className={`letter-${letter}`}>{letter}</span>
+                )}
+              </div>
+            ))}
           </div>
         ))}
-        {/* {`board__level${rowIndex}`} */}
-        <div className="board__level5">
-          <div className="word__letter"> </div>
-          <div className="word__letter"> </div>
-          <div className="word__letter"> </div>
-          <div className="word__letter"> </div>
-          <div className="word__letter"> </div>
-        </div>
+
+        <div className="board__level6">{props.proposedWord}</div>
         <div className="board__level6">
           <div className="word__letter"> </div>
           <div className="word__letter"> </div>
@@ -52,7 +71,10 @@ Hero.propTypes = {
 
 /* 
       <div className="word">
-        <ul className="word__level1">{props.proposedWord}</ul>
+        <div className="word__level1">{props.proposedWord}</div>
+      </div>
+      <div className="word">
+        {props.proposedWord}
       </div>
 
       */
