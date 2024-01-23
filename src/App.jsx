@@ -17,6 +17,7 @@ function App() {
   const [letterStates, setLetterStates] = useState([]);
   const [row, setRow] = useState([]);
   const [allRows, setAllRows] = useState([]);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   const emptyRow = Array.from({ length: 5 }, (_, index) => ' ');
   const allEmptyRows = Array(6)
@@ -88,15 +89,6 @@ function App() {
     setLetterStates(updatedLetterStates);
   };
 
-  // const updateProposedWord = usedLetters.map((letter, ind) => {
-  //   const letterClassName = `word__letter ${letterStates[ind]}`;
-  //   return (
-  //     <div key={ind} className={letterClassName}>
-  //       {letter}
-  //     </div>
-  //   );
-  // });
-
   return (
     <>
       {' '}
@@ -105,7 +97,6 @@ function App() {
         <main className="main">
           <Main
             words={words}
-            // proposedWord={updateProposedWord}
             handleClick={handleClick}
             handleEnter={handleEnter}
             row={row}
