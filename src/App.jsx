@@ -15,12 +15,6 @@ function App() {
   const [isAbsent, setIsAbsent] = useState(false);
   const [isPresent, setIsPresent] = useState(false);
   const [letterStates, setLetterStates] = useState([]);
-
-  // const emptyRow = Array.from({ length: 5 }, (_, index) => (
-  //   <div key={index} className="word__letter">
-  //     {' '}
-  //   </div>
-  // ));
   const [row, setRow] = useState([]);
 
   const emptyRow = Array.from({ length: 5 }, (_, index) => ' ');
@@ -48,8 +42,8 @@ function App() {
     console.log(firstEmptyIndex);
     if (usedLetters.length < 5) {
       if (firstEmptyIndex !== -1) {
-        updatedRow[0][firstEmptyIndex] = letter; // Update the first row directly
-        setRow(updatedRow); // Update the row state
+        updatedRow[0][firstEmptyIndex] = letter;
+        setRow(updatedRow);
       }
       console.log(letter);
       console.log(updatedRow);
@@ -59,6 +53,7 @@ function App() {
 
   console.log(selectedLetter);
   console.log(usedLetters);
+  console.log(row);
 
   const handleEnter = (ev) => {
     ev.preventDefault();
@@ -67,20 +62,18 @@ function App() {
     console.log(lettersRandomWord);
     const updatedLetterStates = lettersRandomWord.map((letter, ind) => {
       if (usedLetters.includes(letter) && usedLetters.indexOf(letter) === ind) {
-        // correctCount++;
         return 'correct';
       } else if (
         usedLetters.includes(letter) &&
         usedLetters.indexOf(letter) !== ind
       ) {
-        // presentCount++;
         return 'present';
       } else {
         return 'absent';
       }
     });
     console.log(updatedLetterStates);
-
+    console.log(row);
     setIsCorrect(updatedLetterStates.every((state) => state === 'correct'));
     setIsPresent(updatedLetterStates.some((state) => state === 'present'));
     setIsAbsent(updatedLetterStates.every((state) => state === 'absent'));
@@ -109,6 +102,7 @@ function App() {
             handleEnter={handleEnter}
             row={row}
             selectedLetter={selectedLetter}
+            letterStates={letterStates}
           />
         </main>
         <Footer />
