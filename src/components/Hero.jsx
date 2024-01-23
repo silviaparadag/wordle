@@ -2,6 +2,8 @@ import Keyboard from './Keyboard';
 import '../styles/layout/Main.scss';
 import PropTypes from 'prop-types';
 
+//{`board__level${rowIndex}`}
+
 const Hero = (props) => {
   const eachRow = props.row.map((columns, rowIndex) => {
     return (
@@ -21,13 +23,25 @@ const Hero = (props) => {
       </div>
     );
   });
+
+  const sixRows = props.allRows.map((row, rowIndex) => {
+    return (
+      <div key={rowIndex} className="board">
+        {Array(5)
+          .fill()
+          .map(() => eachRow)}
+      </div>
+    );
+  });
+  // const sixRows = Array(5)
+  //   .fill()
+  //   .map(() => eachRow);
+
   return (
     <div className="hero">
       <h1 className="hero__subtitle">Let's play!</h1>
-
-      <div className="board">
-        {eachRow}
-        <div className="board__level6">{props.proposedWord}</div>
+      {props.allRows}
+      {/* <div className="board">
         <div className="board__level6">
           <div className="word__letter"> </div>
           <div className="word__letter"> </div>
@@ -35,7 +49,9 @@ const Hero = (props) => {
           <div className="word__letter"> </div>
           <div className="word__letter"> </div>
         </div>
-      </div>
+        {eachRow}
+      </div> */}
+      {sixRows}
       <Keyboard
         handleClick={props.handleClick}
         handleEnter={props.handleEnter}
@@ -48,12 +64,20 @@ export default Hero;
 
 Hero.propTypes = {
   words: PropTypes.array,
-  proposedWord: PropTypes.array,
+  // proposedWord: PropTypes.array,
   handleClick: PropTypes.func,
   handleEnter: PropTypes.func,
   row: PropTypes.array,
   selectedLetter: PropTypes.string,
   letterStates: PropTypes.array,
+  allRows: PropTypes.array,
 };
 
-/*  */
+/*  <div className="board__level6">
+          <div className="word__letter"> </div>
+          <div className="word__letter"> </div>
+          <div className="word__letter"> </div>
+          <div className="word__letter"> </div>
+          <div className="word__letter"> </div>
+        </div>
+        <div className="board__level6">{props.proposedWord}</div> */
