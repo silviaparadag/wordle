@@ -16,8 +16,13 @@ function App() {
   const [isPresent, setIsPresent] = useState(false);
   const [letterStates, setLetterStates] = useState([]);
   const [row, setRow] = useState([]);
+  const [allRows, setAllRows] = useState([]);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   const emptyRow = Array.from({ length: 5 }, (_, index) => ' ');
+  const allEmptyRows = Array(6)
+    .fill()
+    .map(() => [...emptyRow]);
 
   useEffect(() => {
     dataApi.getWordFromJson().then((data) => {
@@ -26,27 +31,32 @@ function App() {
       const randomIndex = Math.floor(Math.random() * result.length);
       setRandomWord(result[randomIndex]);
       setRow([emptyRow]);
+      setAllRows(allEmptyRows);
     });
   }, []);
+
   console.log(randomWord);
   console.log(row);
+  console.log(allRows);
+
   const handleClick = (ev) => {
     ev.preventDefault();
     console.log('click ' + ev.target.value);
     const letter = ev.target.value;
     setSelectedLetter(letter);
-    const updatedRow = [...row];
-    const firstEmptyIndex = updatedRow[0].findIndex(
-      (element) => element === ' '
-    );
+    const updatedAllRows = [...allRows];
+    const updatedRow = [...updatedAllRows[0]];
+    const firstEmptyIndex = updatedRow.findIndex((element) => element === ' ');
     console.log(firstEmptyIndex);
     if (usedLetters.length < 5) {
       if (firstEmptyIndex !== -1) {
-        updatedRow[0][firstEmptyIndex] = letter;
-        setRow(updatedRow);
+        updatedRow[firstEmptyIndex] = letter;
+        updatedAllRows[0] = updatedRow;
+        setAllRows(updatedAllRows);
       }
       console.log(letter);
       console.log(updatedRow);
+
       setUsedLetters([...usedLetters, letter]);
     }
   };
@@ -54,6 +64,8 @@ function App() {
   console.log(selectedLetter);
   console.log(usedLetters);
   console.log(row);
+  const arrayRandomWord = randomWord.split('');
+  console.log(arrayRandomWord);
 
   const handleEnter = (ev) => {
     ev.preventDefault();
@@ -80,15 +92,6 @@ function App() {
     setLetterStates(updatedLetterStates);
   };
 
-  const updateProposedWord = usedLetters.map((letter, ind) => {
-    const letterClassName = `word__letter ${letterStates[ind]}`;
-    return (
-      <div key={ind} className={letterClassName}>
-        {letter}
-      </div>
-    );
-  });
-
   return (
     <>
       {' '}
@@ -97,12 +100,12 @@ function App() {
         <main className="main">
           <Main
             words={words}
-            proposedWord={updateProposedWord}
             handleClick={handleClick}
             handleEnter={handleEnter}
             row={row}
             selectedLetter={selectedLetter}
             letterStates={letterStates}
+            allRows={allRows}
           />
         </main>
         <Footer />
