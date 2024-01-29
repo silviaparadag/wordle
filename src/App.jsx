@@ -44,18 +44,19 @@ function App() {
     console.log('click ' + ev.target.value);
     const letter = ev.target.value;
     setSelectedLetter(letter);
-    const updatedRow = [...row];
-    const firstEmptyIndex = updatedRow[0].findIndex(
-      (element) => element === ' '
-    );
+    const updatedAllRows = [...allRows];
+    const updatedRow = [...updatedAllRows[0]];
+    const firstEmptyIndex = updatedRow.findIndex((element) => element === ' ');
     console.log(firstEmptyIndex);
     if (usedLetters.length < 5) {
       if (firstEmptyIndex !== -1) {
-        updatedRow[0][firstEmptyIndex] = letter;
-        setRow(updatedRow);
+        updatedRow[firstEmptyIndex] = letter;
+        updatedAllRows[0] = updatedRow;
+        setAllRows(updatedAllRows);
       }
       console.log(letter);
       console.log(updatedRow);
+
       setUsedLetters([...usedLetters, letter]);
     }
   };
@@ -63,6 +64,8 @@ function App() {
   console.log(selectedLetter);
   console.log(usedLetters);
   console.log(row);
+  const arrayRandomWord = randomWord.split('');
+  console.log(arrayRandomWord);
 
   const handleEnter = (ev) => {
     ev.preventDefault();
