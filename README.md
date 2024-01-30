@@ -6,7 +6,7 @@ Hi 👋🏻!
 
 This is a wordle game, but please note that it is **still under construction**. 👩🏻‍💻 
 
-## 🎲 | Getting started
+## 🎲  |  Getting started
 
 1. To start the project, download or fork the repository.
 
@@ -29,6 +29,16 @@ npm run dev
 
 &nbsp;
 
+## 🎲  |  How To Play
+
+`- Guess the Wordle in 6 tries.`
+
+`- Each guess must be a valid 5-letter word.`
+
+`- The color of the tiles will change to show how close your guess was to the word.`
+
+
+&nbsp;
 
 For further questions, please contact me:
 
