@@ -18,6 +18,8 @@ function App() {
   const [row, setRow] = useState([]);
   const [allRows, setAllRows] = useState([]);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [currentRowIndex, setCurrentRowIndex] = useState(0);
+  const [proposedWords, setProposedWords] = useState([[]]);
 
   const emptyRow = Array.from({ length: 5 }, (_, index) => ' ');
   const allEmptyRows = Array(6)
@@ -45,20 +47,20 @@ function App() {
     const letter = ev.target.value;
     setSelectedLetter(letter);
     const updatedAllRows = [...allRows];
-    const updatedRow = [...updatedAllRows[0]];
+    const updatedRow = [...updatedAllRows[currentRowIndex]];
     const firstEmptyIndex = updatedRow.findIndex((element) => element === ' ');
     console.log(firstEmptyIndex);
-    if (usedLetters.length < 5) {
+    if (usedLetters.length < 5 && currentRowIndex < 6) {
       if (firstEmptyIndex !== -1) {
         updatedRow[firstEmptyIndex] = letter;
-        updatedAllRows[0] = updatedRow;
+        updatedAllRows[currentRowIndex] = updatedRow;
         setAllRows(updatedAllRows);
       }
-      console.log(letter);
-      console.log(updatedRow);
-
-      setUsedLetters([...usedLetters, letter]);
     }
+    console.log(letter);
+    console.log(updatedRow);
+
+    setUsedLetters([...usedLetters, letter]);
   };
 
   console.log(selectedLetter);
@@ -71,6 +73,7 @@ function App() {
     ev.preventDefault();
     console.log('enter');
     const lettersRandomWord = randomWord.split('');
+    setProposedWords([...proposedWords, usedLetters]);
     console.log(lettersRandomWord);
     const updatedLetterStates = lettersRandomWord.map((letter, ind) => {
       if (usedLetters.includes(letter) && usedLetters.indexOf(letter) === ind) {
@@ -90,7 +93,10 @@ function App() {
     setIsPresent(updatedLetterStates.some((state) => state === 'present'));
     setIsAbsent(updatedLetterStates.every((state) => state === 'absent'));
     setLetterStates(updatedLetterStates);
+    setCurrentRowIndex(currentRowIndex + 1);
+    setUsedLetters([]);
   };
+  console.log(currentRowIndex);
 
   return (
     <>
@@ -106,6 +112,7 @@ function App() {
             selectedLetter={selectedLetter}
             letterStates={letterStates}
             allRows={allRows}
+            currentRowIndex={currentRowIndex}
           />
         </main>
         <Footer />
