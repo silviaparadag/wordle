@@ -12,7 +12,9 @@ const Hero = (props) => {
           <div
             key={colIndex}
             className={`word__letter ${
-              rowIndex === 0 ? props.letterStates[colIndex] : ''
+              rowIndex === props.currentRowIndex - 1
+                ? props.letterStates[colIndex]
+                : ''
             }`}
           >
             {letter === ' ' ? ' ' : <span>{letter}</span>}
@@ -43,6 +45,7 @@ Hero.propTypes = {
   selectedLetter: PropTypes.string,
   letterStates: PropTypes.array,
   allRows: PropTypes.array,
+  currentRowIndex: PropTypes.number,
 };
 
 /*   // const sixRows = Array(5)
