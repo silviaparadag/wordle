@@ -20,6 +20,7 @@ const Keyboard = (props) => {
     };
   }, [props.usedLetters]);
   const formRef = React.useRef(null);
+
   return (
     <form
       ref={formRef}
@@ -236,4 +237,5 @@ Keyboard.propTypes = {
   handleClick: PropTypes.func,
   handleEnter: PropTypes.func,
   usedLetters: PropTypes.array,
+  row: PropTypes.array,
 };
