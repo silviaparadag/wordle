@@ -30,6 +30,8 @@ const Hero = (props) => {
       <Keyboard
         handleClick={props.handleClick}
         handleEnter={props.handleEnter}
+        usedLetters={props.usedLetters}
+        row={props.row}
       />
     </div>
   );
@@ -46,6 +48,7 @@ Hero.propTypes = {
   letterStates: PropTypes.array,
   allRows: PropTypes.array,
   currentRowIndex: PropTypes.number,
+  usedLetters: PropTypes.array,
 };
 
 /*   // const sixRows = Array(5)

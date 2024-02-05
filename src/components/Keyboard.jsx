@@ -1,9 +1,34 @@
+import React from 'react';
+import { useEffect } from 'react';
 import '../styles/layout/Main.scss';
 import PropTypes from 'prop-types';
 
 const Keyboard = (props) => {
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Enter' && props.usedLetters.length === 5) {
+        event.preventDefault();
+        formRef.current.dispatchEvent(
+          new Event('submit', { cancelable: true })
+        );
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [props.usedLetters]);
+  const formRef = React.useRef(null);
+
   return (
-    <form className="keyboard" type="submit" onSubmit={props.handleEnter}>
+    <form
+      ref={formRef}
+      className="keyboard"
+      type="submit"
+      onSubmit={props.handleEnter}
+      onKeyDown={props.handleEnter}
+    >
       <div className="keyboard__row">
         <button
           onClick={props.handleClick}
@@ -211,4 +236,6 @@ export default Keyboard;
 Keyboard.propTypes = {
   handleClick: PropTypes.func,
   handleEnter: PropTypes.func,
+  usedLetters: PropTypes.array,
+  row: PropTypes.array,
 };
