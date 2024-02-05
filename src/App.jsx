@@ -75,18 +75,22 @@ function App() {
     const lettersRandomWord = randomWord.split('');
     setProposedWords([...proposedWords, usedLetters]);
     console.log(lettersRandomWord);
-    const updatedLetterStates = lettersRandomWord.map((letter, ind) => {
-      if (usedLetters.includes(letter) && usedLetters.indexOf(letter) === ind) {
+    const updatedLetterStates = usedLetters.map((letter, ind) => {
+      if (
+        lettersRandomWord.includes(letter) &&
+        lettersRandomWord.indexOf(letter) === ind
+      ) {
         return 'correct';
       } else if (
-        usedLetters.includes(letter) &&
-        usedLetters.indexOf(letter) !== ind
+        lettersRandomWord.includes(letter) &&
+        lettersRandomWord.indexOf(letter) !== ind
       ) {
         return 'present';
       } else {
         return 'absent';
       }
     });
+
     console.log(updatedLetterStates);
     console.log(row);
     setIsCorrect(updatedLetterStates.every((state) => state === 'correct'));
