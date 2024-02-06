@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 
 const Keyboard = (props) => {
   useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'Enter' && props.usedLetters.length === 5) {
-        event.preventDefault();
+    const handleKeyDown = (ev) => {
+      if (ev.key === 'Enter' && props.usedLetters.length === 5) {
+        ev.preventDefault();
         formRef.current.dispatchEvent(
           new Event('submit', { cancelable: true })
         );
@@ -220,7 +220,7 @@ const Keyboard = (props) => {
           m
         </button>
         <button
-          onClick={props.handleClick}
+          onClick={props.handleDelete}
           className="keyboard__key"
           value={'Del'}
         >
@@ -238,4 +238,5 @@ Keyboard.propTypes = {
   handleEnter: PropTypes.func,
   usedLetters: PropTypes.array,
   row: PropTypes.array,
+  handleDelete: PropTypes.func,
 };

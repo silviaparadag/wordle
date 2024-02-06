@@ -32,6 +32,7 @@ const Hero = (props) => {
         handleEnter={props.handleEnter}
         usedLetters={props.usedLetters}
         row={props.row}
+        handleDelete={props.handleDelete}
       />
     </div>
   );
@@ -43,6 +44,7 @@ Hero.propTypes = {
   words: PropTypes.array,
   handleClick: PropTypes.func,
   handleEnter: PropTypes.func,
+  handleDelete: PropTypes.func,
   row: PropTypes.array,
   selectedLetter: PropTypes.string,
   letterStates: PropTypes.array,

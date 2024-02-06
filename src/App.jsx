@@ -63,6 +63,26 @@ function App() {
     setUsedLetters([...usedLetters, letter]);
   };
 
+  const handleDelete = (ev) => {
+    ev.preventDefault();
+    console.log('delete');
+    const updatedAllRows = [...allRows];
+    const updatedRow = [...updatedAllRows[currentRowIndex]];
+    const lastLetterIndex = updatedRow
+      .map((letter, ind) => (letter !== ' ' ? ind : -1))
+      .reduce((a, b) => Math.max(a, b));
+
+    console.log(lastLetterIndex);
+    if (lastLetterIndex !== -1) {
+      updatedRow[lastLetterIndex] = ' ';
+      updatedAllRows[currentRowIndex] = updatedRow;
+      setAllRows(updatedAllRows);
+    }
+    console.log(updatedRow);
+    const updatedUsedLetters = [...usedLetters];
+    updatedUsedLetters.pop();
+    setUsedLetters(updatedUsedLetters);
+  };
   console.log(selectedLetter);
   console.log(usedLetters);
   console.log(row);
@@ -117,6 +137,7 @@ function App() {
             letterStates={letterStates}
             allRows={allRows}
             currentRowIndex={currentRowIndex}
+            handleDelete={handleDelete}
           />
         </main>
         <Footer />
